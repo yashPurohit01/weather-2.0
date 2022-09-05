@@ -1,0 +1,19 @@
+@use '../../../Utility/Variable' as * ;
+@use '../../../Utility/Helper' as * ;
+
+
+.rangeContainer{
+    width: 180px;
+    background-color: rgba(196, 193, 193, 0.369);
+    border-radius: 10px;
+    height: 25px;
+    border: 1px solid whitesmoke;
+    & .tracker{
+        width: 60%;
+        background-color: var(--clr_blueShadow);
+        height: 100%;
+        overflow: hidden;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+}

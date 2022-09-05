@@ -1,0 +1,46 @@
+@use '../../Utility/Helper' as * ;
+@use '../../Utility/Variable' as * ;
+
+
+.navMain{
+   @include flexCol(center , flex-start );
+   grid-row-start: 1;
+   grid-row-end: 3;
+   background-color: whitesmoke;
+   
+   & .icons{
+    font-size: 46px;
+   }
+
+   & .navHead{
+    @include flex(center , flex-start);
+    padding: 10px;
+    width: 75%;
+    font-size: 14px;
+    font-family:'Comfortaa', cursive;;
+    color: var(--clr_blueDark);
+    gap: 10px;
+   }
+   & .airQuality{
+    padding: 10px 20px;
+    @include flex(center,center);
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    & .airContent{
+       background-color: var(--clr_blueDark);
+       color: var(--clr_blueShadow);
+       font-weight: 600;
+       width: 80px;
+       text-align: center;
+       border-radius: 10px;
+       & .name{
+          margin-bottom: 3px;
+       }
+       & .value{
+         color: white;
+         font-size: 18px;
+         margin-top: 3px;
+       }
+    }
+   }
+}

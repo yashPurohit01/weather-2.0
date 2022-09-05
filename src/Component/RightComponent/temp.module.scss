@@ -1,0 +1,122 @@
+@use '../../Utility/Helper' as * ;
+@use '../../Utility/Variable' as * ;
+
+
+.tempParent{
+    background-color:  var(--clr_blueShadowBG);
+    grid-row-start: 1;
+    grid-row-end: 3;
+    padding: 20px;
+    color: white;
+    font-family: var(--poppin_font);
+    height: 100%;
+    box-sizing: border-box;
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    :is(p){
+     letter-spacing: 0.3mm;
+    }
+    h5{
+        font-family: 400;
+        font-size: 12px
+
+    }
+    & .tempDetailheading{
+        @include flex(center , space-between);
+        & p:first-child{
+           font-size: 16px;
+        }
+        & p:last-child{
+            font-size: 12px;
+            opacity: 0.7;
+            font-weight: 300;
+        }
+
+    }
+    & .RiseSetDetail{
+        @include flexCol(center , flex-start);
+        gap: 0.5rem;
+        font-family: var(--poppin_font);
+        & .head{
+            @include flex(center , space-between);
+            width: 100%;
+            font-size: 12px;
+            opacity: 0.9    ;
+        }
+        & .detailContainer{
+            padding: 10px;
+            border: 2px solid rgb(229, 235, 243);
+            border-radius: 5px;
+            background-color: rgba(240, 248, 255, 0.149);
+            display: grid;
+            grid-template-columns: 50px 150px 100px;
+            grid-template-rows: 20px 20px;
+            font-family: var(--Primary_font);
+            & .icons{
+                font-size: 44px;
+                opacity: 0.6;
+            }
+            & .title{
+                grid-row-start: 1;
+                grid-row-end:2;
+                grid-column-start: 2;
+                font-size: 12px;
+                font-weight: 500;
+                opacity: 0.7;
+            }
+            & .value{
+                grid-row-start: 2;
+                grid-row-end:3;
+                grid-column-start: 2;
+            }
+            & .duration{
+                grid-row-end: 3;
+                grid-row-start: 1;
+                grid-column-start: 3;
+                grid-column-end: 4;
+                align-self: center;
+                font-weight:600 ;
+            }
+        }
+       
+    }
+    & .tempDetails{
+        & .icons{
+            font-size: 36px;
+        }
+        & .temp{
+            @include flex(center, space-between); 
+            border-bottom: 2px solid rgba(128, 128, 128, 0.113);
+            padding-bottom: 10px;
+            & h2{
+                font-size: 32px;
+                font-family: var(--Primary_font);
+            }
+            & .feels{
+                font-size: 12px;
+                font-family: var(--Primary_font);
+                opacity: 0.7;
+            }
+        }
+        & .rainInfo{
+          
+            & .head{
+                font-size: 14px;
+                margin-top: 20px;
+            }
+            & .table{
+                width: 100%;
+                margin-top: 10px;
+                height: 100px;
+                overflow-y: scroll;
+                & tr{
+                 padding: 5px 0 ;
+                 @include flex(center , space-evenly);
+                 font-size: 12px;
+                }
+            }
+        }
+    }
+}

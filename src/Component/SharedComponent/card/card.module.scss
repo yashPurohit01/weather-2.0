@@ -1,0 +1,39 @@
+@use '../../../Utility/Variable' as * ;
+@use '../../../Utility/Helper' as * ;
+
+
+.cardContainer{
+    font-family: var(--poppin_font);
+    display: grid;
+    width: 210px;
+    grid-template-columns: 60px 150px;
+    grid-template-rows: 30px 40px;
+    background-color: var(--clr_blueLight);
+    border-radius:10px ;
+    padding: 10px;
+
+    *{
+        margin: 0;
+    }
+
+    & .title{
+        grid-column-end: 3;
+        grid-column-start: 1;
+        text-align: center;
+        margin: 0;
+        opacity: 0.8;
+    }
+    & .icons{
+        grid-row-start: 2;
+        grid-column-end: 2;
+        font-size: 42px;
+        color: var(--clr_blueShadow);
+    }
+    & .value{
+        grid-row-start: 2;
+        grid-column-start: 2;
+        align-items: center;
+        font-size: 28px;
+        text-align: center;
+    }
+}
