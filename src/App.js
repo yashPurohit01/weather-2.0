@@ -1,4 +1,4 @@
-import axios from 'axios';
+
 import { useState, useEffect, useReducer } from 'react';
 import { api_key } from './api/api';
 import Axios from './api/Axios';
@@ -17,7 +17,6 @@ function App() {
   const { isLoading, air_quality, location, current_info, astro , forcasts , hourly_Update } = state;
 
   const { condition, feelslike_c, temp_c } = current_info
-
   useEffect(() => {
 
     const apiCall = async () => {
@@ -25,13 +24,12 @@ function App() {
 
       if (searchQuery) {
         try {
-          const { data } = await Axios.get(`forecast.json?q=${searchQuery}&days=3&aqi=yes&key=${api_key}`)
+          const { data } = await Axios.get(`forecast.json?q=${searchQuery}&days=7&aqi=yes&key=${api_key}`)
 
           dispatch({
             type: FETCH_DATA_SUCCESSFULLY, payload: data
           })
 
-          console.log(data);
         }
         catch (e) {
           dispatch({
@@ -47,7 +45,7 @@ function App() {
     <div className="App">
       <NavBar air_quality={air_quality} isLoading={isLoading} />
       <HeaderComponent setSearchQuery={setSearchQuery} searchQuery={searchQuery} />
-      <MainComponent current_info={current_info} isLoading={isLoading} />
+      <MainComponent current_info={current_info} forcasts = {forcasts} isLoading={isLoading} />
       <RightTempComponent
         astro={astro}
         location={location}

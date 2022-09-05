@@ -26,7 +26,7 @@ export  const postReducer  = (state , action) =>{
                current_info:action.payload.current,
                air_quality:action.payload.current.air_quality,
                astro:action.payload.forecast?.forecastday[0]?.astro,
-               forcasts:action.payload.forcasts?.forecastday,
+               forcasts:action.payload.forecast?.forecastday,
                hourly_Update:action.payload.forecast?.forecastday[0]?.hour
                
 

@@ -10,6 +10,8 @@
     color: white;
     font-family: var(--poppin_font);
     height: 100%;
+    align-items: stretch;
+    flex-grow: 1;
     box-sizing: border-box;
     *{
         padding: 0;
@@ -101,7 +103,9 @@
             }
         }
         & .rainInfo{
-          
+          height: 250px;
+          overflow-y:scroll;
+          position: relative;
             & .head{
                 font-size: 14px;
                 margin-top: 20px;
@@ -109,8 +113,7 @@
             & .table{
                 width: 100%;
                 margin-top: 10px;
-                height: 100px;
-                overflow-y: scroll;
+                position: relative;
                 & tr{
                  padding: 5px 0 ;
                  @include flex(center , space-evenly);
