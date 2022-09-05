@@ -16,6 +16,7 @@
     *{
         padding: 0;
         margin: 0;
+        user-select: none;
     }
     :is(p){
      letter-spacing: 0.3mm;
@@ -103,7 +104,7 @@
             }
         }
         & .rainInfo{
-          height: 250px;
+          height: 240px;
           overflow-y:scroll;
           position: relative;
             & .head{
@@ -120,6 +121,9 @@
                  font-size: 12px;
                 }
             }
+           &::-webkit-scrollbar {
+            display: none;
+          }
         }
     }
 }
