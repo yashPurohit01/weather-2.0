@@ -8,15 +8,16 @@ import { BsCloudFog2 } from 'react-icons/bs'
 import { WiHumidity } from 'react-icons/wi'
 import TempChartComponent from '../SharedComponent/TempChart/TempChartComponent'
 import { RingLoader } from '../RingLoader/RingLoader'
+import NoResult from '../SharedComponent/error/NoResult'
 
 
-function MainComponent({ current_info, isLoading, forcasts }) {
+function MainComponent({ current_info, isLoading, forcasts, status_code }) {
   const { pressure_mb, humidity, uv, wind_kph, vis_km, cloud } = current_info;
   let max_temp = [];
   let min_temp = [];
   let x_axis_date = [];
+console.log(status_code)
 
-  
   useEffect(() => {
 
     const getMaxMinTemp = () => {
@@ -34,7 +35,7 @@ function MainComponent({ current_info, isLoading, forcasts }) {
       })
     }
     getMaxMinTemp()
-  }, [current_info , max_temp, min_temp]);
+  }, [current_info, max_temp, min_temp]);
 
   const data = [
     {
@@ -77,28 +78,30 @@ function MainComponent({ current_info, isLoading, forcasts }) {
 
   return (
     <>
-      {!isLoading
-        ?
-        <div className={styles.mainParent}>
-          <p>Todays overview</p>
-          <div className={styles.overView}>
-            {
-              data.map((info, index) => {
-                return (
-                  <Card info={info} index={index} key={index} />
-                )
-              })
+      {!isLoading ?
+        <>
+          {  status_code === 200?
+            <div className={styles.mainParent}>
+              <p>Todays overview</p>
+              <div className={styles.overView}>
+                {
+                  data.map((info, index) => {
+                    return (
+                      <Card info={info} index={index} key={index} />
+                    )
+                  })
 
-            }
+                }
+              </div>
+              <p>Day MAX Temperature Scale</p>
+              <div className={styles.chart}>
+                <TempChartComponent max_temp={max_temp} min_temp={min_temp} x_axis_date={x_axis_date} />
+              </div>
+            </div>
+            : <NoResult/>
+          }
 
-
-
-          </div>
-          <p>Day MAX Temperature Scale</p>
-          <div className={styles.chart}>
-            <TempChartComponent max_temp={max_temp} min_temp={min_temp} x_axis_date={x_axis_date} />
-          </div>
-        </div>
+        </>
         : <RingLoader />
       }
     </>
@@ -106,3 +109,6 @@ function MainComponent({ current_info, isLoading, forcasts }) {
 }
 
 export default MainComponent
+
+/*   : 
+         } */

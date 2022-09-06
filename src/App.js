@@ -14,7 +14,7 @@ function App() {
   const [searchQuery, setSearchQuery] = useState("")
   const [state, dispatch] = useReducer(postReducer, INITIAL_STATE);
 
-  const { isLoading, air_quality, location, current_info, astro , forcasts , hourly_Update } = state;
+  const { isLoading, air_quality, location, current_info, astro , forcasts , hourly_Update,status_code } = state;
 
   const { condition, feelslike_c, temp_c } = current_info
   useEffect(() => {
@@ -25,17 +25,20 @@ function App() {
       if (searchQuery) { 
         try {
           const res = await Axios.get(`forecast.json?q=${searchQuery}&days=7&aqi=yes&key=${api_key}`)
-           const {data } = res
+           const {data, status } = res
            console.log(res)
           dispatch({
-            type: FETCH_DATA_SUCCESSFULLY, payload: data
-          })
+            type: FETCH_DATA_SUCCESSFULLY, payload:res
+          }
+            )
 
         }
-        catch (e) {
+        catch (err) {
+          console.log("----")
+          console.log(err.response); 
           dispatch({
             type: FETCH_DATA_FAIL,
-            payload: "Something went wrong"
+            payload:err.response
           })
         }
       }
@@ -44,9 +47,9 @@ function App() {
   }, [searchQuery]);
   return (
     <div className="App">
-      <NavBar air_quality={air_quality} isLoading={isLoading} />
+      <NavBar air_quality={air_quality} isLoading={isLoading}  status_code={status_code}/>
       <HeaderComponent setSearchQuery={setSearchQuery} searchQuery={searchQuery} />
-      <MainComponent current_info={current_info} forcasts = {forcasts} isLoading={isLoading} />
+      <MainComponent current_info={current_info} forcasts = {forcasts} isLoading={isLoading} status_code={status_code}/>
       <RightTempComponent
         astro={astro}
         location={location}
@@ -54,7 +57,8 @@ function App() {
         condition={condition}
         temp={temp_c}
         hourly_Update={hourly_Update}
-        isLoading={isLoading} />
+        isLoading={isLoading} 
+        status_code={status_code}/>
     </div>
   );
 }

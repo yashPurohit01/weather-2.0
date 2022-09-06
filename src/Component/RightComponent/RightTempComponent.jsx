@@ -1,9 +1,9 @@
 import React from 'react'
 import styles from './temp.module.scss'
 import { WiSunrise, WiSunset } from 'react-icons/wi'
-import { BsCloudSunFill } from 'react-icons/bs'
+import {BsClouds , BsCloudFog , BsCloudDrizzle  , BsSun ,BsMoonStars} from 'react-icons/bs'
 import Range from '../SharedComponent/Range/Range'
-
+import {IoCloudyNightOutline} from 'react-icons/io5'
 
 const timeNow = () => {
   const time = new Date();
@@ -12,18 +12,40 @@ const timeNow = () => {
   return now;
 }
 
-function RightTempComponent({ astro, location, feelslike, temp, isLoading, hourly_Update }) {
+function RightTempComponent({ astro, location, feelslike, temp, isLoading, hourly_Update ,  status_code }) {
 
   let time = new Date();
 
   const value = hourly_Update.filter((data, index) => index === time.getHours())
 
   const desc = value[0]?.condition.text;
+  
+  const icon = () =>{
+      if(desc.includes("rain")){
+        return <BsCloudDrizzle/>
+      }
+      else if(desc.includes("cloudy")){
+        return <BsClouds/>
+      }
+      else if(desc.includes("fog")){
+        return <BsCloudFog/>
+      }
+      else if(desc.toLowerCase().includes("clear")){
+        if(value[0]?.is_day){
+          return <BsSun/>
+        }
+        else{
+          return <BsMoonStars/>
+        }
+      }
+
+      
+  } 
   return (
 
     <div className={styles.tempParent}>
       {
-        !isLoading ?
+        !isLoading && status_code === 200?
           <>
             <div className={styles.tempDetailheading}>
               <div>
@@ -34,7 +56,7 @@ function RightTempComponent({ astro, location, feelslike, temp, isLoading, hourl
             </div>
             <div className={styles.tempDetails}>
               <div className={styles.icons}>
-                <BsCloudSunFill />
+             {icon()}
               </div>
               <div className={styles.temp}>
                 <div>

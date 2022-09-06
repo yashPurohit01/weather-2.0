@@ -3,7 +3,7 @@ import styles from './nav.module.scss';
 import { SiReactivex } from 'react-icons/si'
 import { IoLogoLinkedin, IoLogoGithub, IoLogoInstagram } from 'react-icons/io5'
 import { FcCloseUpMode } from 'react-icons/fc'
-function NavBar({ air_quality, isLoading }) {
+function NavBar({ air_quality, isLoading, status_code }) {
   const quality = Object.entries(air_quality)
   return (
 
@@ -16,8 +16,9 @@ function NavBar({ air_quality, isLoading }) {
               <SiReactivex className={styles.icons} />
               <h2>weatherCast</h2>
             </div>
+            {status_code ==200 ?
             <div className={styles.airQuality}>
-              <h3>Air Quality (μg/m3)</h3>
+              <h3>"Air Quality (μg/m3)</h3>
               {
                 quality.map((data, index) => {
                   return (
@@ -29,6 +30,7 @@ function NavBar({ air_quality, isLoading }) {
                 })
               }
             </div>
+              : "" }
             <div className={styles.link}>
               <a href='https://www.linkedin.com/in/yash-purohit-a135321b1/'><IoLogoLinkedin className={styles.icons} /></a>
               <a href='https://github.com/yashPurohit01'><IoLogoGithub className={styles.icons} /></a>
