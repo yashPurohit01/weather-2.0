@@ -18,7 +18,7 @@ function NavBar({ air_quality, isLoading, status_code }) {
             </div>
             {status_code ==200 ?
             <div className={styles.airQuality}>
-              <h3>"Air Quality (μg/m3)</h3>
+              <h3>Air Quality (μg/m3)</h3>
               {
                 quality.map((data, index) => {
                   return (
