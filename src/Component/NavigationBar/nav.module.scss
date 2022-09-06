@@ -3,7 +3,7 @@
 
 
 .navMain{
-   @include flexCol(center , flex-start );
+   @include flexCol(center , space-between);
    grid-row-start: 1;
    grid-row-end: 3;
    background-color: whitesmoke;
@@ -43,4 +43,25 @@
        }
     }
    }
-}
+   & .link{
+      @include flex(center , center);
+      padding: 0 20px;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 5px 20px;
+      flex-wrap: wrap;
+   
+      & p{
+         font-size:12px;
+         opacity: .6;
+         margin: 0;
+         font-weight: 600;
+      }
+      & .icons{
+         font-size: 18px;
+         color: black;
+         margin: 0 8px;
+         opacity: 0.7;
+      }
+   }
+   }

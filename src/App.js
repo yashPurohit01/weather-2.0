@@ -22,10 +22,11 @@ function App() {
     const apiCall = async () => {
       dispatch({ type: FETCH_DATA, })
 
-      if (searchQuery) {
+      if (searchQuery) { 
         try {
-          const { data } = await Axios.get(`forecast.json?q=${searchQuery}&days=7&aqi=yes&key=${api_key}`)
-
+          const res = await Axios.get(`forecast.json?q=${searchQuery}&days=7&aqi=yes&key=${api_key}`)
+           const {data } = res
+           console.log(res)
           dispatch({
             type: FETCH_DATA_SUCCESSFULLY, payload: data
           })
