@@ -42,6 +42,7 @@
         @include flexCol(center , flex-start);
         gap: 0.5rem;
         font-family: var(--poppin_font);
+        margin-top: 1.4rem;
         & .head{
             @include flex(center , space-between);
             width: 100%;
