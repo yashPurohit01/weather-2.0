@@ -34,7 +34,7 @@ function MainComponent({ current_info, isLoading, forcasts }) {
       })
     }
     getMaxMinTemp()
-  }, [current_info]);
+  }, [current_info , max_temp, min_temp]);
 
   const data = [
     {
