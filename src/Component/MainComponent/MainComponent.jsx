@@ -41,7 +41,7 @@ console.log(status_code)
     setMaxTemp(max_temp);
     setMinTemp(min_temp);
     setXLabel(x_axis_date);
-  }, [current_info, maxtemp,mintemp , xaxislabel]);
+  }, [current_info/* , maxtemp,mintemp , xaxislabel */]);
 
   const data = [
     {
