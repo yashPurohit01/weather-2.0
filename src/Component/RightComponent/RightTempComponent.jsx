@@ -3,7 +3,6 @@ import styles from './temp.module.scss'
 import { WiSunrise, WiSunset } from 'react-icons/wi'
 import {BsClouds , BsCloudFog , BsCloudDrizzle  , BsSun ,BsMoonStars} from 'react-icons/bs'
 import Range from '../SharedComponent/Range/Range'
-import {IoCloudyNightOutline} from 'react-icons/io5'
 
 const timeNow = () => {
   const time = new Date();

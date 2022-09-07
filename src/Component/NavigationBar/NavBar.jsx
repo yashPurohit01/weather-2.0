@@ -16,7 +16,7 @@ function NavBar({ air_quality, isLoading, status_code }) {
               <SiReactivex className={styles.icons} />
               <h2>weatherCast</h2>
             </div>
-            {status_code ==200 ?
+            {status_code === 200 ?
             <div className={styles.airQuality}>
               <h3>Air Quality (μg/m3)</h3>
               {

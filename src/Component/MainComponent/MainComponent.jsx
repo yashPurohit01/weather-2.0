@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Card from '../SharedComponent/card/Card'
 import styles from './MainComponent.module.scss'
 
@@ -13,6 +13,9 @@ import NoResult from '../SharedComponent/error/NoResult'
 
 function MainComponent({ current_info, isLoading, forcasts, status_code }) {
   const { pressure_mb, humidity, uv, wind_kph, vis_km, cloud } = current_info;
+  const [ maxtemp , setMaxTemp]  = useState([]);
+  const [ mintemp , setMinTemp]  = useState([]);
+  const [  xaxislabel , setXLabel]  = useState([]);
   let max_temp = [];
   let min_temp = [];
   let x_axis_date = [];
@@ -27,15 +30,18 @@ console.log(status_code)
         const { date } = data
         const weekDay = new Date(date)
         const { maxtemp_c, mintemp_c, } = data.day
-        max_temp.push(maxtemp_c);
-        min_temp.push(mintemp_c);
+       max_temp.push(maxtemp_c);
+        min_temp.push(mintemp_c); 
         const arr = weekDay.toDateString().split(" ");
         const x_axis = `${arr[2]},${arr[1]}`;
         x_axis_date.push(x_axis);
       })
     }
     getMaxMinTemp()
-  }, [current_info, max_temp, min_temp]);
+    setMaxTemp(max_temp);
+    setMinTemp(min_temp);
+    setXLabel(x_axis_date);
+  }, [current_info, maxtemp,mintemp , xaxislabel]);
 
   const data = [
     {
